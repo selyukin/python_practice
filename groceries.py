@@ -23,6 +23,9 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ]
 
-print (products)
+#print (products)
 
+print ("There are:", len(products), "products")
+for i in range(len(products)):
+    print (products[i]['name'], "($%s)" %(products[i]['price']))
 #code.interact(local=locals())
