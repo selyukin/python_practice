@@ -24,14 +24,21 @@ products = [
 ]
 
 #print (products)
-
-#print ("There are:", len(products), "products")
-#for i in range(len(products)):
-#    print (products[i]['name'], "($%s)" %(products[i]['price']))
 #code.interact(local=locals())
 
+prdcts = []
+print ("There are", len(products), "products:")
+for i in range(len(products)):
+    prdcts.append((products[i]['name'], "($%s)" %(products[i]['price'])))
+for i in sorted(prdcts):
+    print (i)
+
+
 dept = []
-print (type(dept))
 for i in range(len(products)):
     dept.append(products[i]['department'])
-print (dept)
+print ("There are", len(set(dept)), "unique departments:")
+
+for i in sorted(set(dept)):
+    print (i)
+#print (list(set(dept)))
