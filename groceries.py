@@ -1,4 +1,4 @@
-#import code
+import code
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -24,21 +24,24 @@ products = [
 ]
 
 #print (products)
-#code.interact(local=locals())
-
+'''
 prdcts = []
 print ("There are", len(products), "products:")
 for i in range(len(products)):
     prdcts.append((products[i]['name'], "($%s)" %(products[i]['price'])))
 for i in sorted(prdcts):
     print (i)
-
+'''
 
 dept = []
 for i in range(len(products)):
     dept.append(products[i]['department'])
+    print (products[i]['department'], dept.count(products[i]['department']))
 print ("There are", len(set(dept)), "unique departments:")
 
 for i in sorted(set(dept)):
     print (i)
-#print (list(set(dept)))
+
+
+
+#code.interact(local=locals())
