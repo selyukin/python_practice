@@ -1,4 +1,5 @@
 import code
+import operator
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -24,24 +25,47 @@ products = [
 ]
 
 #print (products)
-'''
+
 prdcts = []
 print ("There are", len(products), "products:")
 for i in range(len(products)):
-    prdcts.append((products[i]['name'], "($%s)" %(products[i]['price'])))
+    prdcts.append((products[i]['name'], "$" + str(products[i]['price'])))
 for i in sorted(prdcts):
-    print (i)
+    print ("+", i)
+
+'''
+#Prof's version, without parenthesis
+prdcts = sorted(products, key=operator.itemgetter("name"))  # this keeps the list of dictionaries but sorts it based on "name"
+for product in prdcts:
+    price_usd = ' (${0:.2f})'.format(product["price"])
+    print(" + " + product["name"] + price_usd)
 '''
 
+
+#my version, non-unique list of depts, with aggregate count
 dept = []
 for i in range(len(products)):
     dept.append(products[i]['department'])
-    print (products[i]['department'], dept.count(products[i]['department']))
+    #print (products[i]['department'], dept.count(products[i]['department']))
+
+'''
+#unique depts, sorted, without count
 print ("There are", len(set(dept)), "unique departments:")
-
 for i in sorted(set(dept)):
-    print (i)
+	print (i)
+'''
 
+#prof code
+unique_dept = set(dept) # removing deuplicate values
+unique_dept = list(unique_dept)
+unique_dept = sorted(unique_dept)
+
+print("--------------")
+print("THERE ARE " + str(len(unique_dept)) + " DEPARTMENTS:")
+
+for department_name in unique_dept:
+    count_of_products = dept.count(department_name)
+    print(" + " + department_name.title() + " (" + str(count_of_products) + " products)")
 
 
 #code.interact(local=locals())
