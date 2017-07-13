@@ -32,28 +32,29 @@ print ("Sofiya's Grocery")
 print ("---------------")
 print ("Web: www.sofiyasgrocery.com")
 print ("Phone: 123-456-7890")
-print ("Checkout Time:", datetime.datetime.now())
+print ("Checkout Time:", datetime.datetime.now().strftime("%B %d,%Y %I:%M %p"))
 print ("---------------")
 
 print ("Shopping Cart Items:")
 
-
 # Checkpoint 1
-while item > 0:
+while True:
 	try:
-		item = int(input("Please input a product identifier, or 'Done' if there are no more items:"))
-		while item > 20 or item < 1:
-			item = int(input("Please input a valid product identifier:"))
-		if item > 0 and item < 21:
-			cart.append(item)
-	except ValueError:
+		item = input("Please input a product item number, or 'Done' if there are no more items:")
 		if item == "Done":
-			print ("Thanks")
-		break
+			break
+		if item != "Done":
+			if int(item) > 20 or int(item) < 1:
+				item = input("Please input a valid product item number:")
+			elif int(item) > 0 and int(item) < 21:
+				cart.append(int(item))
+	except ValueError:
+		print("Error.")
 
-#print ("Shopping cart identifiers include:", cart)
+print ("Shopping cart items include:")
 
 #Checkpoint 2
+import operator
 
 ids = []
 for product in products:
@@ -62,8 +63,9 @@ for product in products:
 subtotal = 0
 for num in ids:
 	if num in cart:
-		subtotal = subtotal + products[num-1]["price"]
-		print ("+", products[num-1]["name"], ', ${0:.2f}'.format(products[num-1]["price"]))
+		freq = cart.count(num)
+		subtotal = subtotal + products[num-1]["price"]*freq
+		print ("+", products[num-1]["name"], ', ${0:.2f}'.format(products[num-1]["price"]), 'x', freq)
 
 
 tax = subtotal*0.08875
