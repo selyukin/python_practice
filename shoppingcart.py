@@ -23,14 +23,12 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ]
 
-"should extract id #s from dictionary"
-
 
 item = 1
 cart = []
 
 
-#use "break" to end infinite loop
+# Checkpoint 1
 while item > 0:
 	try:
 		item = int(input("Please input a product identifier, or 'Done' if there are no more items:"))
@@ -44,3 +42,16 @@ while item > 0:
 		break
 
 print ("Shopping cart identifiers include:", cart)
+
+#Checkpoint 2
+
+ids = []
+for product in products:
+	ids.append(product["id"])
+#print (ids)
+totalprice = 0
+for num in ids:
+	if num in cart:
+		print ("+", products[num-1]["name"], ", $", products[num-1]["price"])
+		totalprice = totalprice+products[num-1]["price"]
+print ("The total price is $", totalprice)
