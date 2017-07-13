@@ -1,4 +1,4 @@
-import sys
+import datetime
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -27,6 +27,16 @@ products = [
 item = 1
 cart = []
 
+print ("---------------")
+print ("Sofiya's Grocery")
+print ("---------------")
+print ("Web: www.sofiyasgrocery.com")
+print ("Phone: 123-456-7890")
+print ("Checkout Time:", datetime.datetime.now())
+print ("---------------")
+
+print ("Shopping Cart Items:")
+
 
 # Checkpoint 1
 while item > 0:
@@ -41,7 +51,7 @@ while item > 0:
 			print ("Thanks")
 		break
 
-print ("Shopping cart identifiers include:", cart)
+#print ("Shopping cart identifiers include:", cart)
 
 #Checkpoint 2
 
@@ -49,20 +59,22 @@ ids = []
 for product in products:
 	ids.append(product["id"])
 #print (ids)
-totalprice = 0
+subtotal = 0
 for num in ids:
 	if num in cart:
-		totalprice = totalprice + products[num-1]["price"]
+		subtotal = subtotal + products[num-1]["price"]
 		print ("+", products[num-1]["name"], ', ${0:.2f}'.format(products[num-1]["price"]))
 
-totalprice = '${0:.2f}'.format(totalprice)
 
-print ("The total price is $", totalprice)
-'''
-for num in ids:
-	if num in cart:
-		cost = ' (${0:.2f})'.format(product["price"])
-		print ("+", products[num-1]["name"], ", $", cost)
-		totalprice = totalprice + cost
-print ("The total price is $", cost)
-'''
+tax = subtotal*0.08875
+totalprice = subtotal+tax
+
+print ("---------------")
+subtotal = '${0:.2f}'.format(subtotal)
+print ("Subtotal:", subtotal)
+tax = '${0:.2f}'.format(tax)
+print ("Sales Tax (8.875%):", tax)
+totalprice = '${0:.2f}'.format(totalprice)
+print ("Total:", totalprice)
+print ("---------------")
+print ("Thanks for your business. Please come again.")
