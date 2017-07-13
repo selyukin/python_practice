@@ -26,11 +26,21 @@ products = [
 "should extract id #s from dictionary"
 
 
-item = int(input("Please input a product identifier, or 'Done' if there are no more items:"))
-print (item)
+item = 1
 cart = []
-print (type(cart))
-while item < 10:
-	item = int(input("Please input a product identifier, or 'Done' if there are no more items:"))
-	cart.append(item)
-print (cart)
+
+
+#use "break" to end infinite loop
+while item > 0:
+	try:
+		item = int(input("Please input a product identifier, or 'Done' if there are no more items:"))
+		while item > 20 or item < 1:
+			item = int(input("Please input a valid product identifier:"))
+		if item > 0 and item < 21:
+			cart.append(item)
+	except ValueError:
+		if item == "Done":
+			print ("Thanks")
+		break
+
+print ("Shopping cart identifiers include:", cart)
