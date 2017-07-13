@@ -52,6 +52,17 @@ for product in products:
 totalprice = 0
 for num in ids:
 	if num in cart:
-		print ("+", products[num-1]["name"], ", $", products[num-1]["price"])
-		totalprice = totalprice+products[num-1]["price"]
+		totalprice = totalprice + products[num-1]["price"]
+		print ("+", products[num-1]["name"], ', ${0:.2f}'.format(products[num-1]["price"]))
+
+totalprice = '${0:.2f}'.format(totalprice)
+
 print ("The total price is $", totalprice)
+'''
+for num in ids:
+	if num in cart:
+		cost = ' (${0:.2f})'.format(product["price"])
+		print ("+", products[num-1]["name"], ", $", cost)
+		totalprice = totalprice + cost
+print ("The total price is $", cost)
+'''
