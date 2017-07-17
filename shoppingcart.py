@@ -27,15 +27,7 @@ products = [
 item = 1
 cart = []
 
-print ("---------------")
-print ("Sofiya's Grocery")
-print ("---------------")
-print ("Web: www.sofiyasgrocery.com")
-print ("Phone: 123-456-7890")
-print ("Checkout Time:", datetime.datetime.now().strftime("%B %d,%Y %I:%M %p"))
-print ("---------------")
 
-print ("Shopping Cart Items:")
 
 # Checkpoint 1
 while True:
@@ -51,10 +43,19 @@ while True:
 	except ValueError:
 		print("Error.")
 
-print ("Shopping cart items include:")
 
 #Checkpoint 2
 import operator
+
+print ("---------------")
+print ("Sofiya's Grocery")
+print ("---------------")
+print ("Web: www.sofiyasgrocery.com")
+print ("Phone: 123-456-7890")
+print ("Checkout Time:", datetime.datetime.now().strftime("%B %d,%Y %I:%M %p"))
+print ("---------------")
+
+print ("Shopping cart items include:")
 
 ids = []
 for product in products:
@@ -70,6 +71,7 @@ for num in ids:
 
 tax = subtotal*0.08875
 totalprice = subtotal+tax
+
 
 print ("---------------")
 subtotal = '${0:.2f}'.format(subtotal)
